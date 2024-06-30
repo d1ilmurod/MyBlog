@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300' rel='stylesheet' type="{% static 'css/books.css' %}">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="container bootstrap snipets">
+        <h1 class="text-center text-muted">Books</h1>
+        <div class="row flow-offset-1">
+            {% for book in books %}
+            <div class="col-xs-6 col-md-4">
+                <div class="product tumbnail thumbnail-3">
+                    <a href="{% url 'books_detail' book.pk %}">
+                        <img style="width:310px; height:280px;"
+                            src="{{ book.image.url }}" alt=""></a>
+                    <div class="caption">
+                        <h6>{{ book.name }}</h6><span class="price">
+                            </span><span class="price sale">{{ book.price }} so'm</span>
+                    </div>
+                </div>
+                <br>
+                <br>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+
+</html>
